@@ -106,8 +106,8 @@ class Class_EM:
                 # Adjust each new points wrt newImage mid points
                 xdist = int(newimage_x_mid - x_new)
                 ydist = int(newimage_y_mid - y_new)
-                if (xdist >=0) and (ydist >=0) and (xdist < newimage.shape[0]) and ydist < newimage.shape[0]:
-                    newimage[xdist][ydist][:] = image[img_x][img_y][:]
+                if (xdist >=0) and (ydist >=0) and (xdist < image.shape[0]) and ydist < image.shape[1]:
+                    newimage[img_x][img_y][:] = image[xdist][ydist][:]
  
  
         return newimage
@@ -120,8 +120,8 @@ class Class_EM:
         :return: canvas
         '''
         height, width, num_channels = image.shape
-        max_len = int(math.sqrt(width * width + width * width))
-        canvas = np.zeros((max_len, max_len, 3))
+        # max_len = int(math.sqrt(width * width + height * height))
+        canvas = np.zeros((height, width, 3))
         return canvas
  
  
